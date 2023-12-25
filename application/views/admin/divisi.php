@@ -46,11 +46,11 @@
 							<div class="table-data-feature">
 								<div class="table-data-feature">
 								<button class="item" title="Edit" data-toggle="modal" data-target="#editDivisiModal<?= $div->division_id;?>" >
-									<i class="fa fa-pencil"></i>
+									<i class="fa fa-pencil" style="color:blue"></i>
 								</button>
 								<button class="item" data-toggle="tooltip" title="Delete">
 									<a href="#!" onclick="deleteConfirm('<?= base_url('estate/delDivisi/'. $div->division_id);?>')" >
-									<i class="fa fa-trash-o" style="color:black"></i></a>
+									<i class="fa fa-trash-o" style="color:red"></i></a>
 								</button>
 							</div>
 						</td>

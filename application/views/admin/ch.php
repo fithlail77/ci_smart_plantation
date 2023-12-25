@@ -16,10 +16,11 @@
                 <div class="box-header">
 				  <div class="margin">
 						<div class="btn-group">
-							<button type="button" class="btn btn-add btn-md-left">
-								<a href="<?= base_url('ch/tmbCh');?>">Tambah Data Hujan</a>
-								<!--<i class="zmdi zmdi-plus"></i>Tambah Curah Hujan-->
+							<a href="<?= base_url('ch/tmbCh');?>">
+							<button type="button" class="btn btn-success btn-md-left">
+								<i class="zmdi zmdi-plus"></i>Tambah Data
 							</button>
+							</a>
 						</div>
 						<div class="btn-group">
 							<button type="button" class="btn btn-success btn-md-left" data-toggle="modal" data-target="#uploadChModal">
@@ -58,11 +59,11 @@
 							<div class="table-data-feature">
 								<div class="table-data-feature">
 								<button class="item" title="Edit" data-toggle="modal" data-target="#editHujanModal<?= $ch->ch_id;?>" >
-									<i class="fa fa-pencil"></i>
+									<i class="fa fa-pencil" style="color:blue"></i>
 								</button>
 								<button class="item" data-toggle="tooltip" title="Delete">
 									<a href="#!" onclick="deleteConfirm('<?= base_url('ch/delch/'. $ch->ch_id);?>')" >
-									<i class="fa fa-trash-o" style="color:black"></i></a>
+									<i class="fa fa-trash-o" style="color:red"></i></a>
 								</button>
 							</div>
 						</td>
@@ -77,7 +78,7 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
-      <!-- modal addEstate -->
+      <!-- modal uploadCh -->
     <script src="<?= base_url("assets/js/jquery.min.js"); ?>" type="text/javascript"></script>
 		<div class="modal fade" id="uploadChModal" tabindex="-1" role="dialog" aria-labelledby="uploadChModal" aria-hidden="true">
 			<div class="modal-dialog modal-md" role="document">

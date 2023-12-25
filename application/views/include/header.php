@@ -9,7 +9,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!--<link rel="stylesheet" href="https://code.ionicframework.com/1.3.3/css/ionic.min.css">-->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 		<link rel="stylesheet" href="<?= base_url('assets/');?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/');?>ionic/ionicons.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/');?>dist/css/AdminLTE.min.css">

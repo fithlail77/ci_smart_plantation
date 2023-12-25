@@ -71,7 +71,7 @@
                     <div id="insert-form"></div>
                     <div class="modal-footer">
                     <a href="<?= base_url('ch');?>">
-                    <button type="reset" class="btn btn-secondary">Batal</button></a>
+                    <button type="button" class="btn btn-secondary">Batal</button></a>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
                 <input type="hidden" id="jumlah-form" value="1">

@@ -18,15 +18,6 @@ class Admin extends CI_Controller {
 				$data['title'] = 'Admin Panel Management';
 				$data['user'] = $user;
 				$data['totalest'] = $this->db->count_all_results('m_estate');
-				$data['totalasset'] = $this->db->count_all_results('assets');
-				$data['assetuse'] = $this->db->select('*')
-										->from('assets')
-										->like('status', 'in_use')
-										->count_all_results();
-				$data['notuse'] = $this->db->select('*')
-										->from('assets')
-										->like('status', 'not_use')
-										->count_all_results();
 				
 				$this->load->view('include/header', $data);
 				$this->load->view('include/sidebar', $data);

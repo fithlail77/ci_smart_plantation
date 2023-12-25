@@ -32,7 +32,7 @@
             </div>
             <div class="modal-footer">
                 <a href="<?= base_url('estate');?>">
-                <button type="reset" class="btn btn-secondary">Batal</button></a>
+                <button type="button" class="btn btn-secondary">Batal</button></a>
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
         </form>

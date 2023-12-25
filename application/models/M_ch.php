@@ -29,4 +29,9 @@ class M_ch extends CI_Model {
 			return 0;
 		}
 	}
+
+	public function delCH($ch)
+	{
+		return $this->db->delete('m_ch',['ch_id' => $ch]);
+	}
 }

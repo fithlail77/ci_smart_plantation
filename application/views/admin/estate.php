@@ -16,8 +16,8 @@
                 <div class="box-header">
 				  <div class="margin">
 						<div class="btn-group">
-							<button type="button" class="btn btn-add btn-md-left">
-								<a href="<?= base_url("estate/tmbEst");?>"><i class="zmdi zmdi-plus"></i>Tambah estate</a>
+							<button type="button" class="btn btn-success btn-md-left" data-toggle="modal" data-target="#addEstateModal">
+								<i class="zmdi zmdi-plus"></i>Tambah Estate
 							</button>
 						</div>
 					</div>
@@ -44,9 +44,12 @@
 						<td><?= $est->estate_name;?></td>
 						<td>
 							<div class="table-data-feature">
-								<div class="table-data-feature">
 								<button class="item" title="Edit" data-toggle="modal" data-target="#editEstateModal<?= $est->estate_id;?>" >
-									<i class="fa fa-pencil"></i>
+									<i class="fa fa-pencil" style="color:blue"></i>
+								</button>
+								<button class="item" data-toggle="tooltip" title="Delete">
+									<a href="#!" onclick="deleteConfirm('<?= base_url('estate/delEstate/'. $est->estate_id);?>')" >
+									<i class="fa fa-trash-o" style="color:red"></i></a>
 								</button>
 							</div>
 						</td>

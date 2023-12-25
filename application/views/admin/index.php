@@ -21,46 +21,11 @@
                   <p>Total Estate</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="ion ion-home"></i>
                 </div>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3><?= $totalasset;?></h3>
-                  <p>Total Assets</p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-laptop"></i>
-                </div>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3><?= $assetuse;?></h3>
-                  <p>Asset In Use</p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-bar-chart"></i>
-                </div>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                <div class="inner">
-                  <h3><?= $notuse;?></h3>
-                  <p>Asset Not Use</p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-pie-chart"></i>
-                </div>
-              </div>
-            </div><!-- ./col -->
           </div><!-- /.row -->
           <!-- Main row -->
         </section><!-- /.content -->

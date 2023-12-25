@@ -143,4 +143,11 @@ class Ch extends CI_Controller {
 			}
 		}
 	}
+
+	public function delch($ch)
+	{
+		$this->m_ch->delCH($ch);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hapus Data Berhasil....!</div>');
+		redirect('ch');
+	}
 }
