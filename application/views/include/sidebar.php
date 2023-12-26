@@ -43,11 +43,20 @@
 						</li>
 						<li class="treeview">
               <a href="#">
-                <i class="fa fa-database"></i> <span>Transaksi Data</span>
+                <i class="fa fa-database"></i> <span>Transaksi</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?= base_url('ch');?>"><i class="fa fa-arrow-circle-right"></i> Curah Hujan</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-book"></i> <span>Laporan</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?= base_url('ch/rptCh');?>"><i class="fa fa-arrow-circle-right"></i> Curah Hujan</a></li>
               </ul>
             </li>
 						<li class="treeview">

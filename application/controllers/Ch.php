@@ -67,7 +67,7 @@ class Ch extends CI_Controller {
 		$ch = $_POST['ch'];
 		$date = $_POST['tgl'];
 		$time = $_POST['time'];
-		$createdat = date('Y-m-d');
+		$createdat = date('Y-m-d H:i:s');
 		$createdby = $this->session->userdata('username');
 		$data = array();
 
