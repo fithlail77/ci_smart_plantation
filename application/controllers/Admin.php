@@ -15,7 +15,7 @@ class Admin extends CI_Controller {
 		} else {
 			if ($user['role_id'] == 1) {
 				$data['menu'] = 'home';
-				$data['title'] = 'Admin Panel Management';
+				$data['title'] = 'e-Smart Plantations';
 				$data['user'] = $user;
 				$data['totalest'] = $this->db->count_all_results('m_estate');
 				

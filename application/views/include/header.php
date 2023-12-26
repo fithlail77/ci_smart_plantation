@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/');?>plugins/daterangepicker/daterangepicker-bs3.css">
 		<link rel="stylesheet" href="<?= base_url('assets/');?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="<?= base_url('assets/');?>plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="<?= base_url('assets/');?>daterangepicker/daterangepicker.css">
     <script src="<?= base_url("assets/js/jquery.min.js"); ?>" type="text/javascript"></script>
 
   </head>

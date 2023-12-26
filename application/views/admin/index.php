@@ -3,7 +3,7 @@
         <section class="content-header">
           <h1>
             Dashboard
-            <small>Control panel</small>
+            <small>e-Smart Plantations</small>
           </h1>
 					<div class="col-xs-12">
 						<?= $this->session->flashdata('message');?>
