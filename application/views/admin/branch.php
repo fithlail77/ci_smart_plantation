@@ -72,7 +72,7 @@
 							<form action="<?= base_url('company/addBranch');?>" method="post">
 								<div class="form-group">
 									<label>Branch Code</label>
-									<input class="form-control" type="text" name="br_code" id="br_code" value="IBL<?php echo sprintf("%04s", $branch_code) ?>" readonly>
+									<input class="form-control" type="text" name="br_code" id="br_code" value="LXI<?php echo sprintf("%04s", $branch_code) ?>" readonly>
 									<?= form_error('br_code','<small class="text-danger pl-3">','</small>');?>
 								</div>
 								<div class="form-group">

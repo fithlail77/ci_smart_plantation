@@ -25,7 +25,7 @@ class Ch extends CI_Controller {
 				$data['menu'] = 'Curah Hujan';
 				$data['title'] = 'Data Curah Hujan';
 				$data['user'] = $user;
-				$data['hujan'] = $this->m_ch->getCh();
+				$data['hujan'] = $this->m_ch->getChByDate();
 				$data['estate'] = $this->m_estate->getEstate();
 				$data['branch'] = $this->m_company->getBranch();
 
@@ -87,12 +87,10 @@ class Ch extends CI_Controller {
 			$index++;
 		}
 
-		$sql = $this->m_ch->save_batch($data);
-		if($sql) {
-			echo "<script>alert('Data berhasil disimpan');window.location = '".base_url('ch')."';</script>";
-		}else {
-			echo "<script>alert('Data gagal disimpan');window.location = '".base_url('ch/tmbch')."';</script>";
-		}
+		$this->m_ch->save_batch($data);
+		
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
+		redirect('ch');
 	}
 
 	public function uploadCh()
@@ -148,6 +146,23 @@ class Ch extends CI_Controller {
 	{
 		$this->m_ch->delCH($ch);
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hapus Data Berhasil....!</div>');
+		redirect('ch');
+	}
+
+	public function editCh()
+	{
+		$dataedit = [
+			'company' => $this->input->post('branch_id'),
+			'ch_estate' => $this->input->post('ch_estate'),
+			'ch_division' => $this->input->post('ch_division'),
+			'ch' => $this->input->post('ch'),
+			'date' => $this->input->post('date'),
+			'time' => $this->input->post('time')
+		];
+
+		$id = $this->input->post('ch_id');
+		$this->m_ch->update($dataedit, $id);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Ubah Data Berhasil!</div>');
 		redirect('ch');
 	}
 }

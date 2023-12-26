@@ -110,7 +110,7 @@
 		</div>
 		<!-- end modal addDivisi -->
 
-		<!-- modal editEstate -->
+		<!-- modal editDivisi -->
 		<?php $no = 0;
 			foreach($divisi as $div): $no++;?>
 		<div class="modal fade" id="editDivisiModal<?= $div->division_id;?>" tabindex="-1" role="dialog" aria-labelledby="editDivisiModal" aria-hidden="true">
@@ -158,4 +158,4 @@
 			</div>
 		</div>
 		<?php endforeach;?>
-	<!-- end modal editEstate -->	
+	<!-- end modal editDivisi -->	

@@ -34,4 +34,18 @@ class M_ch extends CI_Model {
 	{
 		return $this->db->delete('m_ch',['ch_id' => $ch]);
 	}
+
+	public function update($dataedit, $id)
+	{
+		return $this->db->update('m_ch', $dataedit, ['ch_id' => $id]);
+	}
+
+	public function getChByDate()
+	{
+		$this->db->select('*')
+			     ->from('m_ch')
+				 ->where('date = SUBDATE(CURRENT_DATE(),1)');
+		$get = $this->db->get();
+		return $get->result();
+	}
 }

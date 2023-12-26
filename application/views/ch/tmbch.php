@@ -21,6 +21,7 @@
                   </div>
                   </div>
                 <form action="<?= base_url('ch/save');?>" method="post">
+                <?= $this->session->userdata('message');?>
                 <div class="box-body table-responsive">
                   <table class="table table-bordered table-striped">
                     <thead>
