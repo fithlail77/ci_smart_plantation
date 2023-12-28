@@ -8,236 +8,174 @@
           </h1>
         </section>
         <section class="content">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="box">
-                            <div class="box-header">
-                                <h3 class="box-title"><i class="fa fa-line-chart"></i> Grafik </h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="">Pilih Estate</label>
-                                    <select class="filter_nama" style="width: 150px;">
-                                        <option value=""></option>
-                                        <?php foreach ($estate as $est) : ?>
-                                            <option value="<?= $est->estate_name; ?>"><?= $est->estate_name; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="init-loading grafik" style="height:600px;width:100%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="box">
-                            <div class="box-header">
-                                <h3 class="box-title"><i class="fa fa-line-chart"></i> Grafik Stacked</h3>
-                            </div>
-                            <div class="box-body">
-                                <div class="init-loading grafik_stacked" style="height:640px;width:100%;"></div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="col-md-6">
+              <!-- AREA CHART -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Area Chart</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
                 </div>
+                <div class="box-body">
+                  <div class="chart">
+                    <canvas id="areaChart" style="height:250px"></canvas>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Bar Chart</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="chart">
+                    <canvas id="barChart" style="height:230px"></canvas>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
             </section>
-        
 </div><!-- /.content-wrapper -->
-<script>
-        var filtering = {}
-        $(document).ready(function() {
-            $('.filter_nama').select2({
-                placeholder: "Pilih Estate",
-                allowClear: true,
-                theme: "classic"
-            });
-            filter()
-            init()
+    <!-- jQuery 2.1.4 -->
+    <script src="<?= base_url('assets/');?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="<?= base_url('assets/');?>bootstrap/js/bootstrap.min.js"></script>
+    <!-- ChartJS 1.0.1 -->
+    <script src="<?= base_url('assets/');?>plugins/chartjs/Chart.min.js"></script>
+    <!-- FastClick -->
+    <script src="<?= base_url('assets/');?>plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?= base_url('assets/');?>dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?= base_url('assets/');?>dist/js/demo.js"></script>
+    <!-- page script -->
 
-        })
+    <script>
+      $(function () {
+        /* ChartJS
+         * -------
+         * Here we will create a few charts using ChartJS
+         */
 
-        function filter() {
-            $('.filter_nama').change(function() {
-                filtering['filter_nama'] = $(this).val();
-                init()
-            })
-        }
+        //--------------
+        //- AREA CHART -
+        //--------------
 
-        function init() {
-            $(".init-loading").html("<i class='fa fa-spin fa-refresh'></i> &nbsp;&nbsp;&nbsp;Memuat Data ...");
-            grafik()
-            grafik_stacked()
-        }
+        // Get context with jQuery - using jQuery's .get() method.
+        var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var areaChart = new Chart(areaChartCanvas);
 
-        function grafik() {
-            $.ajax({
-                type: "post",
-                url: "<?php echo base_url() ?>reportch/data_grafik",
-                data: filtering,
-                dataType: "json",
-                success: function(data) {
-                    barChart(data, "grafik");
-                }
-            })
-        }
+        var areaChartData = {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+            {
+              label: "Electronics",
+              fillColor: "rgba(210, 214, 222, 1)",
+              strokeColor: "rgba(210, 214, 222, 1)",
+              pointColor: "rgba(210, 214, 222, 1)",
+              pointStrokeColor: "#c1c7d1",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(220,220,220,1)",
+              data: [65, 59, 80, 81, 56, 55, 40]
+            },
+            {
+              label: "Digital Goods",
+              fillColor: "rgba(60,141,188,0.9)",
+              strokeColor: "rgba(60,141,188,0.8)",
+              pointColor: "#3b8bba",
+              pointStrokeColor: "rgba(60,141,188,1)",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(60,141,188,1)",
+              data: [28, 48, 40, 19, 86, 27, 90]
+            }
+          ]
+        };
 
-        function grafik_stacked() {
-            $.ajax({
-                type: "post",
-                url: "<?php echo base_url() ?>reportch/data_grafik_stack",
-                data: filtering,
-                dataType: "json",
-                success: function(data) {
-                    var app = []
-                    $.each(data, function(i, el) {
-                        $.each(el, function(i, ol) {
-                            app.push(ol);
-                        })
-                    })
-                    barChartStacked(app, "grafik_stacked");
-                }
-            })
-        }
+        var areaChartOptions = {
+          //Boolean - If we should show the scale at all
+          showScale: true,
+          //Boolean - Whether grid lines are shown across the chart
+          scaleShowGridLines: false,
+          //String - Colour of the grid lines
+          scaleGridLineColor: "rgba(0,0,0,.05)",
+          //Number - Width of the grid lines
+          scaleGridLineWidth: 1,
+          //Boolean - Whether to show horizontal lines (except X axis)
+          scaleShowHorizontalLines: true,
+          //Boolean - Whether to show vertical lines (except Y axis)
+          scaleShowVerticalLines: true,
+          //Boolean - Whether the line is curved between points
+          bezierCurve: true,
+          //Number - Tension of the bezier curve between points
+          bezierCurveTension: 0.3,
+          //Boolean - Whether to show a dot for each point
+          pointDot: false,
+          //Number - Radius of each point dot in pixels
+          pointDotRadius: 4,
+          //Number - Pixel width of point dot stroke
+          pointDotStrokeWidth: 1,
+          //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+          pointHitDetectionRadius: 20,
+          //Boolean - Whether to show a stroke for datasets
+          datasetStroke: true,
+          //Number - Pixel width of dataset stroke
+          datasetStrokeWidth: 2,
+          //Boolean - Whether to fill the dataset with a color
+          datasetFill: true,
+          //String - A legend template
+          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+          //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+          maintainAspectRatio: true,
+          //Boolean - whether to make the chart responsive to window resizing
+          responsive: true
+        };
 
-        function barChart(data, chartdiv) {
-            am4core.useTheme(am4themes_animated);
-            am4core.useTheme(am4themes_kelly);
-            var chart = am4core.create(chartdiv, am4charts.XYChart);
+        areaChart.Line(areaChartData, areaChartOptions);
 
-            chart.data = data;
-            // Create axes
-            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-            categoryAxis.dataFields.category = "Estate";
-            categoryAxis.renderer.grid.template.location = 0;
-            categoryAxis.renderer.minGridDistance = 20;
-            categoryAxis.renderer.inside = false;
-            categoryAxis.start = 0;
-            // categoryAxis.end = splitChart;
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $("#barChart").get(0).getContext("2d");
+        var barChart = new Chart(barChartCanvas);
+        var barChartData = areaChartData;
+        barChartData.datasets[1].fillColor = "#00a65a";
+        barChartData.datasets[1].strokeColor = "#00a65a";
+        barChartData.datasets[1].pointColor = "#00a65a";
+        var barChartOptions = {
+          //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+          scaleBeginAtZero: true,
+          //Boolean - Whether grid lines are shown across the chart
+          scaleShowGridLines: true,
+          //String - Colour of the grid lines
+          scaleGridLineColor: "rgba(0,0,0,.05)",
+          //Number - Width of the grid lines
+          scaleGridLineWidth: 1,
+          //Boolean - Whether to show horizontal lines (except X axis)
+          scaleShowHorizontalLines: true,
+          //Boolean - Whether to show vertical lines (except Y axis)
+          scaleShowVerticalLines: true,
+          //Boolean - If there is a stroke on each bar
+          barShowStroke: true,
+          //Number - Pixel width of the bar stroke
+          barStrokeWidth: 2,
+          //Number - Spacing between each of the X value sets
+          barValueSpacing: 5,
+          //Number - Spacing between data sets within X values
+          barDatasetSpacing: 1,
+          //String - A legend template
+          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+          //Boolean - whether to make the chart responsive
+          responsive: true,
+          maintainAspectRatio: true
+        };
 
-            categoryAxis.renderer.grid.template.disabled = true;
-
-            var label = categoryAxis.renderer.labels.template;
-            label.wrap = true;
-            label.maxWidth = 160;
-            // label.truncate = true;
-            label.tooltipText = "{estate}";
-
-            categoryAxis.events.on("sizechanged", function(ev) {
-                var axis = ev.target;
-                var cellWidth = axis.pixelWidth / (axis.endIndex - axis.startIndex);
-                if (cellWidth < axis.renderer.labels.template.maxWidth) {
-                    axis.renderer.labels.template.rotation = -75;
-                    axis.renderer.labels.template.horizontalCenter = "right";
-                    axis.renderer.labels.template.verticalCenter = "middle";
-                } else {
-                    axis.renderer.labels.template.rotation = 0;
-                    axis.renderer.labels.template.horizontalCenter = "middle";
-                    axis.renderer.labels.template.verticalCenter = "top";
-                }
-            });
-
-            var valueAxis1 = chart.yAxes.push(new am4charts.ValueAxis());
-            valueAxis1.extraMax = 0.3;
-            valueAxis1.min = 0;
-
-            var series1 = chart.series.push(new am4charts.ColumnSeries());
-            series1.dataFields.valueY = "data";
-            series1.dataFields.categoryX = "estate";
-            series1.name = "Estate";
-            series1.yAxis = valueAxis1;
-            series1.columns.template.tooltipText = "{valueY.value}";
-            chart.cursor = new am4charts.XYCursor();
-
-            chart.legend = new am4charts.Legend();
-            chart.legend.position = "top";
-        }
-
-        function barChartStacked(data, chartdiv) {
-            var chart = am4core.create(chartdiv, am4charts.XYChart);
-            chart.exporting.menu = new am4core.ExportMenu();
-            chart.exporting.menu.align = "right";
-            chart.exporting.menu.verticalAlign = "top";
-            chart.data = data;
-            chart.paddingRight = 0;
-            chart.paddingLeft = 0;
-            chart.paddingTop = 0;
-            chart.paddingBottom = 0;
-            // Create axes
-            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-            categoryAxis.dataFields.category = "estate";
-            categoryAxis.renderer.grid.template.location = 0;
-            categoryAxis.renderer.minGridDistance = 20;
-            categoryAxis.renderer.inside = false;
-            categoryAxis.start = 0;
-            // categoryAxis.end = splitChart;
-
-            categoryAxis.renderer.grid.template.disabled = true;
-
-            var label = categoryAxis.renderer.labels.template;
-            label.wrap = true;
-            label.maxWidth = 160;
-            // label.truncate = true;
-            label.tooltipText = "{estate}";
-
-            categoryAxis.events.on("sizechanged", function(ev) {
-                var axis = ev.target;
-                var cellWidth = axis.pixelWidth / (axis.endIndex - axis.startIndex);
-                if (cellWidth < axis.renderer.labels.template.maxWidth) {
-                    axis.renderer.labels.template.rotation = -75;
-                    axis.renderer.labels.template.horizontalCenter = "right";
-                    axis.renderer.labels.template.verticalCenter = "middle";
-                } else {
-                    axis.renderer.labels.template.rotation = 0;
-                    axis.renderer.labels.template.horizontalCenter = "middle";
-                    axis.renderer.labels.template.verticalCenter = "top";
-                }
-            });
-
-            var valueAxis1 = chart.yAxes.push(new am4charts.ValueAxis());
-            valueAxis1.extraMax = 0.3;
-            valueAxis1.min = 0;
-
-            var series1 = chart.series.push(new am4charts.ColumnSeries());
-            series1.dataFields.valueY = "data_sedadung";
-            series1.dataFields.categoryX = "estate";
-            series1.yAxis = valueAxis1;
-            series1.name = "Sedadung";
-            series1.fill = "green";
-            series1.stroke = "green";
-            series1.stacked = true;
-            series1.columns.template.tooltipText = "{valueY.value}";
-
-            var series1 = chart.series.push(new am4charts.ColumnSeries());
-            series1.dataFields.valueY = "data_melamor";
-            series1.dataFields.categoryX = "estate";
-            series1.yAxis = valueAxis1;
-            series1.name = "Melamor";
-            series1.fill = "red";
-            series1.stroke = "red";
-            series1.stacked = true;
-            series1.columns.template.tooltipText = "{valueY.value}";
-
-            chart.scrollbarX = new am4charts.XYChartScrollbar();
-            chart.scrollbarX.series.push(series1);
-            chart.scrollbarX.parent = chart.bottomAxesContainer;
-
-            var bullet4 = series1.bullets.push(new am4charts.CircleBullet());
-            bullet4.circle.radius = 3;
-            bullet4.circle.strokeWidth = 2;
-            bullet4.circle.fill = am4core.color("black");
-
-
-            // Add label
-            var labelBullet = series1.bullets.push(new am4charts.LabelBullet());
-            labelBullet.label.html = `
-                <div style='background:red;color:white;padding:0px 20px;text-align:center;'>{data_sedadung}</div>
-                <div style='background:green;color:white;padding:0px 20px;text-align:center;'>{data_melamor}</div>
-                `;
-            labelBullet.label.dy = -40;
-
-            chart.cursor = new am4charts.XYCursor();
-
-            chart.legend = new am4charts.Legend();
-            chart.legend.position = "top";
-        }
+        barChartOptions.datasetFill = false;
+        barChart.Bar(barChartData, barChartOptions);
+      });
     </script>
