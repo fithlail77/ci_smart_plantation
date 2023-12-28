@@ -23,6 +23,11 @@
 		<link rel="stylesheet" href="<?= base_url('assets/');?>plugins/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="<?= base_url('assets/');?>daterangepicker/daterangepicker.css">
     <script src="<?= base_url("assets/js/jquery.min.js"); ?>" type="text/javascript"></script>
+    <script src="<?= base_url('assets/');?>amcharts4/core.js"></script>
+    <script src="<?= base_url('assets/');?>amcharts4/chart.js"></script>
+    <script src="<?= base_url('assets/');?>amcharts4/animated.js"></script>
+    <script src="<?= base_url('assets/');?>amcharts4/kelly.js"></script>
+    <script src="<?= base_url('assets/');?>select2/js/select2.full.min.js"></script>
 
   </head>
   <body class="hold-transition skin-black sidebar-mini">

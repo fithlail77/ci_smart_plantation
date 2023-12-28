@@ -48,4 +48,28 @@ class M_ch extends CI_Model {
 		$get = $this->db->get();
 		return $get->result();
 	}
+
+	public function data_grafik($filter)
+	{
+		$this->db->select('count(*) as data, ch_estate');
+		$this->db->from('m_ch');
+		$this->db->where($filter);
+		$this->db->group_by('ch_estate');
+		return $this->db->get()->result();
+	}
+
+	public function get_estate()
+	{
+		$this->db->select('distinct(ch_estate)');
+		return $this->db->get('m_ch')->result();
+	}
+
+	public function data_grafik_stack($estate)
+	{
+		$this->db->select("$estate as estate, (SELECT SUM('ch') from m_ch where ch_estate = '$estate' and date = 'SUBDATE(CURRENT_DATE(),1)') as data_sedadung,
+			(SELECT SUM('ch') from m_ch where ch_estate = '$estate' and date = 'SUBDATE(CURRENT_DATE(),1)') as data_melamor");
+		$this->db->from('m_ch');
+		$this->db->limit(1);
+		return $this->db->get()->result();
+	}
 }
