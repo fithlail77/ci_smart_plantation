@@ -22,13 +22,19 @@
 		<link rel="stylesheet" href="<?= base_url('assets/');?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="<?= base_url('assets/');?>plugins/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="<?= base_url('assets/');?>daterangepicker/daterangepicker.css">
-    <script src="<?= base_url("assets/js/jquery.min.js"); ?>" type="text/javascript"></script>
-    <script src="<?= base_url('assets/');?>amcharts4/core.js"></script>
-    <script src="<?= base_url('assets/');?>amcharts4/chart.js"></script>
-    <script src="<?= base_url('assets/');?>amcharts4/animated.js"></script>
-    <script src="<?= base_url('assets/');?>amcharts4/kelly.js"></script>
-    <script src="<?= base_url('assets/');?>select2/js/select2.full.min.js"></script>
-
+        <!-- jQuery 2.1.4 -->
+        <script src="<?= base_url('assets/');?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="<?= base_url('assets/');?>bootstrap/js/bootstrap.min.js"></script>
+    <!-- ChartJS 1.0.1 -->
+    <script src="<?= base_url('assets/');?>plugins/chartjs/Chart.min.js"></script>
+    <!-- FastClick -->
+    <script src="<?= base_url('assets/');?>plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?= base_url('assets/');?>dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?= base_url('assets/');?>dist/js/demo.js"></script>
+    <!-- page script -->
   </head>
   <body class="hold-transition skin-black sidebar-mini">
     <div class="wrapper">
