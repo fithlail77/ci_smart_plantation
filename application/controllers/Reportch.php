@@ -16,7 +16,7 @@ class Reportch extends CI_Controller {
 				$data['menu'] = 'Laporan Curah Hujan';
 				$data['title'] = 'Laporan CH';
 				$data['user'] = $user;
-				$data['estate'] = $this->m_estate->getEstate();
+				$data['chartch'] = $this->m_chart->chart_chdaily()->result();
 
 				$this->load->view('include/header', $data);
 				$this->load->view('include/sidebar', $data);
