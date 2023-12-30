@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 		<link rel="stylesheet" href="<?= base_url('assets/');?>bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url('assets/');?>ionic/ionicons.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/');?>dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="<?= base_url('assets/');?>dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/');?>plugins/iCheck/flat/blue.css">
@@ -22,8 +21,8 @@
 		<link rel="stylesheet" href="<?= base_url('assets/');?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="<?= base_url('assets/');?>plugins/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="<?= base_url('assets/');?>daterangepicker/daterangepicker.css">
-        <!-- jQuery 2.1.4 -->
-        <script src="<?= base_url('assets/');?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- jQuery 2.1.4 -->
+    <script src="<?= base_url('assets/');?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="<?= base_url('assets/');?>bootstrap/js/bootstrap.min.js"></script>
     <!-- ChartJS 1.0.1 -->

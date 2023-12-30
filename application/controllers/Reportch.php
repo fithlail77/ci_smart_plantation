@@ -24,6 +24,7 @@ class Reportch extends CI_Controller {
 				$data['chartmlu'] = $this->m_chart->chart_estate_mlu()->result();
 				$data['chartngr'] = $this->m_chart->chart_estate_ngr()->result();
 				$data['chartgmo'] = $this->m_chart->chart_estate_gmo()->result();
+				
 				$this->load->view('include/header', $data);
 				$this->load->view('include/sidebar', $data);
 				$this->load->view('admin/rptch', $data);
